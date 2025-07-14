@@ -5,10 +5,12 @@ const GetCoordinates = async (
 	cityValue,
 	setWeatherState,
 	setIsLoading,
-	setDetailedWeatherStates
+	setDetailedWeatherStates,
+	setCheckbox
 ) => {
 	try {
 		setIsLoading(true)
+
 		const response = await fetch(
 			`${BASE_URL}${encodeURIComponent(
 				cityValue
@@ -29,7 +31,8 @@ const GetCoordinates = async (
 
 			setWeatherState(null)
 			await sendCoordinates(setWeatherState, rounderLat, rounderLon)
-			await getDetailedInfo(setDetailedWeatherStates, rounderLat, rounderLon) // Используем новое состояние
+			setCheckbox(true)
+			await getDetailedInfo(setDetailedWeatherStates, rounderLat, rounderLon)
 		} else {
 			alert('Город не найден')
 		}

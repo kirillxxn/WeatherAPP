@@ -1,20 +1,25 @@
 import GetTime from './GetTime'
 import { CloudyIcon, Moon, Sun, SunAndCloud } from './TempState'
 import { OPEN_METEO_GENERAL_URL, OPEN_METEO_PARAMETERS_URL } from './API'
-const sendCoordinates = async (setWeatherState, rounderLat, rounderLon) => {
+const sendCoordinates = async (
+	cityValue,
+	setWeatherState,
+	rounderLat,
+	rounderLon
+) => {
 	const temperatureElement = document.querySelector('.general__temp-info')
 
 	try {
 		const response = await fetch(
-			`${OPEN_METEO_GENERAL_URL}?latitude=${rounderLat}&longitude=${rounderLon}&current=${OPEN_METEO_PARAMETERS_URL}&timezone=auto`
+			`https://api.weatherapi.com/v1/current.json?key=a8d4dc46350d454d9b3202147251407&q=${encodeURIComponent(
+				cityValue
+			)}&aqi=no`
 		)
 		const data = await response.json()
 
-		temperatureElement.textContent = `${data.current.temperature_2m}°C`
+		temperatureElement.textContent = `${data.current.temp_c}°C`
 
 		const localTime = await GetTime(rounderLat, rounderLon)
-
-		console.log(localTime)
 
 		if (data.current.cloud_cover_low <= 50) {
 			// Ясно

@@ -1,4 +1,4 @@
-const GetTime = async (rounderLat, rounderLon) => {
+/* const GetTime = async (rounderLat, rounderLon) => {
 	try {
 		const response = await fetch(
 			`https://api.api-ninjas.com/v1/worldtime?lat=${rounderLat}&lon=${rounderLon}`,
@@ -37,3 +37,4 @@ const GetTime = async (rounderLat, rounderLon) => {
 }
 
 export default GetTime
+ */

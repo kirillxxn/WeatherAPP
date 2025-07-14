@@ -9,7 +9,7 @@ function Body() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [weatherState, setWeatherState] = useState(null)
 	const [detailedWeatherStates, setDetailedWeatherStates] = useState({})
-
+	const [showCheckbox, setShowCheckbox] = useState(false)
 	const handleClearCityValue = e => {
 		e.preventDefault()
 		setCityValue('')
@@ -20,7 +20,8 @@ function Body() {
 			cityValue,
 			setWeatherState,
 			setIsLoading,
-			setDetailedWeatherStates
+			setDetailedWeatherStates,
+			setShowCheckbox
 		)
 	}
 
@@ -69,7 +70,11 @@ function Body() {
 					</button>
 				</form>
 				<div className='container'>
-					<GeneralInfo isLoading={isLoading} weatherState={weatherState} />
+					<GeneralInfo
+						showCheckbox={showCheckbox}
+						isLoading={isLoading}
+						weatherState={weatherState}
+					/>
 					<DetailedInfo detailedWeatherStates={detailedWeatherStates} />
 				</div>
 			</main>

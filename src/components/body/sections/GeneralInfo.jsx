@@ -1,4 +1,13 @@
-const GeneralInfo = ({ isLoading, weatherState }) => {
+import { useState } from 'react'
+
+const GeneralInfo = ({ isLoading, weatherState, showCheckbox }) => {
+	const [isActive, setIsActive] = useState(false)
+	const handleCheckbox = () => {
+		setIsActive(!isActive)
+		const tempFormatter = document.querySelector('.general__temp-info')
+
+		console.log(tempFormatter.textContent)
+	}
 	return (
 		<>
 			<section className='section__general-info'>
@@ -32,8 +41,16 @@ const GeneralInfo = ({ isLoading, weatherState }) => {
 
 					<p className='day__info-date'></p>
 				</span>
-
 				<p className='general__temp-info'></p>
+				{showCheckbox && (
+					<button
+						onClick={handleCheckbox}
+						className={`switch-btn ${isActive ? 'switch-on' : ''}`}
+					>
+						<span className='celsius'>°С</span>
+						<span className='fahrenheit'>℉</span>
+					</button>
+				)}
 				<p className='general__temp-state'>
 					{weatherState?.text}
 					{weatherState && weatherState.icon}
