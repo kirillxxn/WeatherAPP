@@ -1,5 +1,4 @@
-// GetTime.jsx
-const getTime = async (rounderLat, rounderLon) => {
+const GetTime = async (rounderLat, rounderLon) => {
 	try {
 		const response = await fetch(
 			`https://api.api-ninjas.com/v1/worldtime?lat=${rounderLat}&lon=${rounderLon}`,
@@ -12,7 +11,6 @@ const getTime = async (rounderLat, rounderLon) => {
 		const data = await response.json()
 		const datetime = new Date(data.datetime)
 
-		// Обновляем время и дату в DOM
 		const formattedTime = datetime.toLocaleTimeString('ru-RU', {
 			hour: '2-digit',
 			minute: '2-digit',
@@ -23,7 +21,6 @@ const getTime = async (rounderLat, rounderLon) => {
 			day: 'numeric',
 		})
 
-		// Находим элементы DOM и обновляем их содержимое
 		const timeDOM = document.querySelector('.day__info-time')
 		const dateDOM = document.querySelector('.day__info-date')
 
@@ -39,4 +36,4 @@ const getTime = async (rounderLat, rounderLon) => {
 	}
 }
 
-export default getTime
+export default GetTime

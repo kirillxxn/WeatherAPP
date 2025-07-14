@@ -1,4 +1,4 @@
-import './wet.css'
+import './Wet.css'
 
 function Wet() {
 	return (

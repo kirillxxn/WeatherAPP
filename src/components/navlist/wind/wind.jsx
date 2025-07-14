@@ -1,4 +1,4 @@
-import './wind.css'
+import './Wind.css'
 function Wind() {
 	return (
 		<>

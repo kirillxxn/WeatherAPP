@@ -1,10 +1,10 @@
-import './navlist.css'
+import './NavList.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import Wind from './wind/wind'
-import BigForecast from './bigforecast/bigforecast'
-import Wet from './wet/wet'
-import UvIndex from './uv-index/uv-index'
-import Pressure from './pressure/pressure'
+import Wind from './Wind/Wind'
+import BigForecast from './BigForecast/BigForecast'
+import Wet from './Wet/Wet'
+import UvIndex from './UvIndex/UvIndex'
+import Pressure from './Pressure/Pressure'
 function NavList() {
 	return (
 		<>

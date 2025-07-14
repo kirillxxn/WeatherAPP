@@ -1,4 +1,4 @@
-import { CloudyIcon, Moon, Sun, SunAndCloud } from '../utils/TempState'
+import { CloudyIcon, Moon, Sun, SunAndCloud } from '../../../utils/TempState'
 
 const DetailedInfo = ({ detailedWeatherStates }) => {
 	return (

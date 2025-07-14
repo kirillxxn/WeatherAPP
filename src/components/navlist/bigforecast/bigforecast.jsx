@@ -1,4 +1,4 @@
-import './bigforecast.css'
+import './BigForecast.css'
 
 function BigForecast() {
 	return (

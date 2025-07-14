@@ -10,10 +10,8 @@ const getDetailedInfo = async (
 			`${OPEN_METEO_GENERAL_URL}?latitude=${rounderLat}&longitude=${rounderLon}&hourly=${OPEN_METEO_PARAMETERS_URL}&forecast_days=2`
 		)
 		const data = await response.json()
-
 		const now = new Date()
 		const currentHour = now.getHours()
-
 		const detailedInfoIds = [
 			'text0',
 			'text6',
@@ -22,35 +20,31 @@ const getDetailedInfo = async (
 			'text18',
 			'text22',
 		]
-
-		const states = {} // Объект для хранения состояний погоды
+		const states = {}
 
 		detailedInfoIds.forEach(id => {
 			const hourStr = id.replace('text', '')
 			const slotHour = parseInt(hourStr)
 			const dayShift = currentHour >= slotHour ? 1 : 0
 			const indexInArray = dayShift * 24 + slotHour
-
 			const tempElement = document.getElementById(`${id}_temp`)
 			if (tempElement) {
 				tempElement.textContent = `${data.hourly.temperature_2m[indexInArray]}°C`
 			}
 
 			const cloudCover = data.hourly.cloud_cover_low[indexInArray]
-
-			// Используем время, связанное с текущим временным отрезком
-			const localTimeString = `${slotHour < 10 ? '0' + slotHour : slotHour}:00` // Добавляем ведущий ноль
+			const localTimeString = `${slotHour < 10 ? '0' + slotHour : slotHour}:00`
 
 			if (cloudCover <= 50) {
 				// Ясно
 				if (localTimeString >= '06:00' && localTimeString < '18:00') {
 					states[id] = {
-						temperature: data.hourly.temperature_2m[indexInArray], // Добавляем температуру
+						temperature: data.hourly.temperature_2m[indexInArray],
 						icon: <Sun />,
 					}
 				} else {
 					states[id] = {
-						temperature: data.hourly.temperature_2m[indexInArray], // Добавляем температуру
+						temperature: data.hourly.temperature_2m[indexInArray],
 						icon: <Moon />,
 					}
 				}
@@ -58,25 +52,25 @@ const getDetailedInfo = async (
 				// Малооблачно
 				if (localTimeString >= '06:00' && localTimeString < '18:00') {
 					states[id] = {
-						temperature: data.hourly.temperature_2m[indexInArray], // Добавляем температуру
+						temperature: data.hourly.temperature_2m[indexInArray],
 						icon: <SunAndCloud />,
 					}
 				} else {
 					states[id] = {
-						temperature: data.hourly.temperature_2m[indexInArray], // Добавляем температуру
+						temperature: data.hourly.temperature_2m[indexInArray],
 						icon: <Moon />,
 					}
 				}
 			} else {
 				// Облачно
 				states[id] = {
-					temperature: data.hourly.temperature_2m[indexInArray], // Добавляем температуру
+					temperature: data.hourly.temperature_2m[indexInArray],
 					icon: <CloudyIcon />,
 				}
 			}
 		})
 
-		setDetailedWeatherStates(states) // Устанавливаем состояние детализированной информации
+		setDetailedWeatherStates(states)
 	} catch (error) {
 		console.error(error)
 	}

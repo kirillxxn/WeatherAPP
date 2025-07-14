@@ -1,4 +1,4 @@
-import '../styles/icons.css'
+import '/src/assets/Styles/icons.css'
 
 export const CloudyIcon = () => {
 	return (

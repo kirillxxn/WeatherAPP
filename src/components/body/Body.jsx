@@ -1,55 +1,27 @@
-import { useState } from 'react'
 import './Body.css'
-import sendCoordinates from './utils/SendCoordinates'
-import getDetailedInfo from './utils/GetDetailedInfo'
-import DetailedInfo from './sections/DetailedInfo'
-import GeneralInfo from './sections/GeneralInfo'
-import { BASE_URL } from './utils/API'
+import { useState } from 'react'
+import DetailedInfo from './Sections/DetailedInfo.jsx'
+import GeneralInfo from './Sections/GeneralInfo.jsx'
+import GetCoordinates from '../../utils/GetCoordinates.jsx'
+
 function Body() {
 	const [cityValue, setCityValue] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
-	const [weatherState, setWeatherState] = useState(null) // Основное состояние погоды
-	const [detailedWeatherStates, setDetailedWeatherStates] = useState({}) // Индивидуальное состояние для каждого временного отрезка
+	const [weatherState, setWeatherState] = useState(null)
+	const [detailedWeatherStates, setDetailedWeatherStates] = useState({})
 
 	const handleClearCityValue = e => {
 		e.preventDefault()
 		setCityValue('')
 	}
-
-	const getCoordinates = async e => {
+	const handleSearchCity = e => {
 		e.preventDefault()
-		setIsLoading(true)
-
-		try {
-			const response = await fetch(
-				`${BASE_URL}${encodeURIComponent(
-					cityValue
-				)}&count=1&language=ru&format=json`
-			)
-			const data = await response.json()
-
-			if (data.results && data.results.length > 0) {
-				const cityName = document.querySelector('.general__name-city')
-				cityName.textContent = `${data.results[0].name}`
-
-				const lat = data.results[0].latitude
-				const lon = data.results[0].longitude
-				const parseLat = parseFloat(lat)
-				const parseLon = parseFloat(lon)
-				const rounderLat = parseLat.toFixed(5)
-				const rounderLon = parseLon.toFixed(5)
-
-				setWeatherState(null)
-				await sendCoordinates(setWeatherState, rounderLat, rounderLon)
-				await getDetailedInfo(setDetailedWeatherStates, rounderLat, rounderLon) // Используем новое состояние
-			} else {
-				alert('Город не найден')
-			}
-		} catch (error) {
-			console.error(`Ошибка: ${error.message}`)
-		} finally {
-			setIsLoading(false)
-		}
+		GetCoordinates(
+			cityValue,
+			setWeatherState,
+			setIsLoading,
+			setDetailedWeatherStates
+		)
 	}
 
 	return (
@@ -80,7 +52,7 @@ function Body() {
 						placeholder='Введите город'
 					></input>
 					<button
-						onClick={getCoordinates}
+						onClick={handleSearchCity}
 						type='submit'
 						className='form__search-btn'
 					>

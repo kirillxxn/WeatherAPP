@@ -1,4 +1,4 @@
-import './uv-index.css'
+import './UvIndex.css'
 
 function UvIndex() {
 	return (

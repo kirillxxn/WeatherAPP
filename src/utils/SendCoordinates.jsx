@@ -1,4 +1,4 @@
-import getTime from './GetTime'
+import GetTime from './GetTime'
 import { CloudyIcon, Moon, Sun, SunAndCloud } from './TempState'
 import { OPEN_METEO_GENERAL_URL, OPEN_METEO_PARAMETERS_URL } from './API'
 const sendCoordinates = async (setWeatherState, rounderLat, rounderLon) => {
@@ -12,7 +12,7 @@ const sendCoordinates = async (setWeatherState, rounderLat, rounderLon) => {
 
 		temperatureElement.textContent = `${data.current.temperature_2m}°C`
 
-		const localTime = await getTime(rounderLat, rounderLon)
+		const localTime = await GetTime(rounderLat, rounderLon)
 
 		console.log(localTime)
 

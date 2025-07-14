@@ -1,4 +1,4 @@
-import './pressure.css'
+import './Pressure.css'
 
 function Pressure() {
 	return (
