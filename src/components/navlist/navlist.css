@@ -1,0 +1,30 @@
+.section__nav-info {
+	margin-top: 50px;
+}
+
+.section__nav-list {
+	display: flex;
+	gap: 80px;
+	justify-content: center;
+}
+.nav__list-item {
+	display: flex;
+	gap: 20px;
+}
+.list__item-link {
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	padding: 5px 45px;
+	border-radius: 15px;
+	background-color: rgba(0, 0, 0, 0.2);
+	transition: transform 0.8s ease-in-out;
+}
+.list__item-link:hover {
+	transform: scale(1.2);
+}
+.general {
+	color: white;
+
+	height: 700px;
+}

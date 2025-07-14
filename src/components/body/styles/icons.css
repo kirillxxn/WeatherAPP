@@ -1,0 +1,68 @@
+@keyframes sun {
+	0% {
+		transform: rotate(15deg);
+	}
+	25% {
+		transform: rotate(60deg);
+	}
+	50% {
+		transform: rotate(80deg);
+	}
+	75% {
+		transform: rotate(60deg);
+	}
+	100% {
+		transform: rotate(15deg);
+	}
+}
+
+@keyframes moon {
+	0% {
+		transform: rotate(-10deg);
+	}
+	25% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(5deg);
+	}
+	75% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-10deg);
+	}
+}
+@keyframes cloud {
+	0% {
+		transform: translateX(5px);
+	}
+	25% {
+		transform: translateX(8px);
+	}
+	50% {
+		transform: translateX(10px);
+	}
+	75% {
+		transform: translateX(8px);
+	}
+	100% {
+		transform: translateX(5px);
+	}
+}
+.sun-icon {
+	width: 50px;
+	animation: sun 8s ease-in-out infinite;
+}
+.moon-icon {
+	width: 50px;
+	animation: moon 5s ease-in-out infinite;
+}
+.suncloud {
+	width: 50px;
+}
+.cloud-icon {
+	width: 70px;
+	height: 50px;
+	animation: cloud 8s ease-in-out infinite;
+}
