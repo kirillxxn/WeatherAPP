@@ -1,13 +1,24 @@
 import { useState } from 'react'
 
-const GeneralInfo = ({ isLoading, weatherState, showCheckbox }) => {
+const CurrentInfo = ({
+	isLoading,
+	weatherState,
+	tempCelsius,
+	tempFar,
+	showCheckbox,
+}) => {
 	const [isActive, setIsActive] = useState(false)
 	const handleCheckbox = () => {
 		setIsActive(!isActive)
-		const tempFormatter = document.querySelector('.general__temp-info')
-
-		console.log(tempFormatter.textContent)
 	}
+
+	let currentTemperature
+	if (!isActive) {
+		currentTemperature = tempCelsius !== '-' ? `${tempCelsius} °C` : ''
+	} else {
+		currentTemperature = tempFar !== '-' ? `${tempFar} ℉` : ''
+	}
+
 	return (
 		<>
 			<section className='section__general-info'>
@@ -32,22 +43,19 @@ const GeneralInfo = ({ isLoading, weatherState, showCheckbox }) => {
 							</div>
 						</div>
 					</div>
-				) : (
-					''
-				)}
+				) : null}
 				<h2 className='general__name-city'></h2>
 				<span className='general__day-info'>
 					<p className='day__info-time'></p>
-
 					<p className='day__info-date'></p>
 				</span>
-				<p className='general__temp-info'></p>
+				<p className='general__temp-info'>{currentTemperature || ''}</p>
 				{showCheckbox && (
 					<button
 						onClick={handleCheckbox}
 						className={`switch-btn ${isActive ? 'switch-on' : ''}`}
 					>
-						<span className='celsius'>°С</span>
+						<span className='celsius'>°C</span>
 						<span className='fahrenheit'>℉</span>
 					</button>
 				)}
@@ -60,4 +68,4 @@ const GeneralInfo = ({ isLoading, weatherState, showCheckbox }) => {
 	)
 }
 
-export default GeneralInfo
+export default CurrentInfo

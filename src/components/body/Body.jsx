@@ -1,8 +1,9 @@
 import './Body.css'
 import { useState } from 'react'
-import DetailedInfo from './Sections/DetailedInfo.jsx'
-import GeneralInfo from './Sections/GeneralInfo.jsx'
-import GetCoordinates from '../../utils/GetCoordinates.jsx'
+import DetailedInfo from './Sections/HourlyInfo.jsx'
+import CurrentRequest from '../../utils/CurrentRequest.jsx'
+import CurrentInfo from '../Body/Sections/CurrentInfo.jsx'
+import HourlyInfo from './Sections/HourlyInfo.jsx'
 
 function Body() {
 	const [cityValue, setCityValue] = useState('')
@@ -10,18 +11,24 @@ function Body() {
 	const [weatherState, setWeatherState] = useState(null)
 	const [detailedWeatherStates, setDetailedWeatherStates] = useState({})
 	const [showCheckbox, setShowCheckbox] = useState(false)
+	const [tempCelsius, setTempCelsius] = useState('-')
+	const [tempFar, setTempFar] = useState('-')
+
 	const handleClearCityValue = e => {
 		e.preventDefault()
 		setCityValue('')
 	}
+
 	const handleSearchCity = e => {
 		e.preventDefault()
-		GetCoordinates(
+		CurrentRequest(
 			cityValue,
 			setWeatherState,
 			setIsLoading,
 			setDetailedWeatherStates,
-			setShowCheckbox
+			setShowCheckbox,
+			setTempCelsius,
+			setTempFar
 		)
 	}
 
@@ -70,12 +77,14 @@ function Body() {
 					</button>
 				</form>
 				<div className='container'>
-					<GeneralInfo
+					<CurrentInfo
 						showCheckbox={showCheckbox}
 						isLoading={isLoading}
 						weatherState={weatherState}
+						tempCelsius={tempCelsius}
+						tempFar={tempFar}
 					/>
-					<DetailedInfo detailedWeatherStates={detailedWeatherStates} />
+					{<HourlyInfo detailedWeatherStates={detailedWeatherStates} />}
 				</div>
 			</main>
 		</>

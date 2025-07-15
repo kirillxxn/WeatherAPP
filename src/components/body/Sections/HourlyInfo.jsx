@@ -1,11 +1,11 @@
-import { CloudyIcon, Moon, Sun, SunAndCloud } from '../../../utils/TempState'
+import { CloudyIcon, Moon, Sun, SunAndCloud } from '/src/utils/TempState'
 
-const DetailedInfo = ({ detailedWeatherStates }) => {
+const HourlyInfo = ({ detailedWeatherStates }) => {
 	return (
 		<section className='section__detailed-info'>
 			{Object.keys(detailedWeatherStates).map(id => {
 				const hourStr = id.replace('text', '')
-				const formattedHour = hourStr.padStart(2, '0') // Добавляем ведущий ноль, если необходимо
+				const formattedHour = hourStr.padStart(2, '0')
 
 				return (
 					<article className='detailed-info' key={id}>
@@ -23,4 +23,4 @@ const DetailedInfo = ({ detailedWeatherStates }) => {
 	)
 }
 
-export default DetailedInfo
+export default HourlyInfo
