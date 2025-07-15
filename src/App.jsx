@@ -1,13 +1,13 @@
 import './App.css'
-import Header from './components/header/header'
-import Body from './components/body/body'
-import NavList from './components/navlist/navlist'
+import Header from './components/Header/Header'
+import WeatherInfo from './components/WeatherInfo/WeatherInfo'
+import NavList from './components/NavList/NavList'
 
 function App() {
 	return (
 		<>
 			<Header />
-			<Body />
+			<WeatherInfo />
 			<NavList />
 		</>
 	)

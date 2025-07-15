@@ -35,7 +35,8 @@ dd {
 	margin: 0;
 }
 
-body {
+body,
+html {
 	min-height: 100vh;
 	scroll-behavior: smooth;
 	text-rendering: optimizeSpeed;

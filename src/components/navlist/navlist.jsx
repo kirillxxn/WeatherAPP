@@ -1,6 +1,6 @@
 import './NavList.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
-import Wind from './Wind/Wind'
+import Wind from './Wind/wind'
 import BigForecast from './BigForecast/BigForecast'
 import Wet from './Wet/Wet'
 import UvIndex from './UvIndex/UvIndex'
