@@ -1,6 +1,5 @@
 import './Body.css'
 import { useState } from 'react'
-import DetailedInfo from './Sections/HourlyInfo.jsx'
 import CurrentRequest from '../../utils/CurrentRequest.jsx'
 import CurrentInfo from '../Body/Sections/CurrentInfo.jsx'
 import HourlyInfo from './Sections/HourlyInfo.jsx'

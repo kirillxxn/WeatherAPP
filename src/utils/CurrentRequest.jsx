@@ -20,11 +20,17 @@ const CurrentRequest = async (
 				cityValue
 			)}${PARAMETERS_URL}`
 		)
+
+		if (!response.ok) {
+			throw new Error('Ошибка: ' + response.statusText)
+		}
+
 		const data = await response.json()
 		setTempCelsius(data.current.temp_c)
 		setTempFar(data.current.temp_f)
+
 		const cityName = document.querySelector('.general__name-city')
-		const temperatureElement = document.querySelector('.general__temp-info')
+		const temperatureElement = document.queryselector('.general__temp-info')
 
 		const datetime = new Date(data.location.localtime)
 
@@ -41,12 +47,14 @@ const CurrentRequest = async (
 		const timeDOM = document.querySelector('.day__info-time')
 		const dateDOM = document.querySelector('.day__info-date')
 		HourlyRequest(setDetailedWeatherStates, cityValue)
+
 		if (timeDOM) {
 			timeDOM.textContent = formattedTime
 		}
 		if (dateDOM) {
 			dateDOM.textContent = formattedDate
 		}
+
 		if (data.location.name && data.location.name.length > 0) {
 			cityName.textContent = `${data.location.name}`
 			temperatureElement.textContent = `${data.current.temp_c}°C`
@@ -71,11 +79,10 @@ const CurrentRequest = async (
 			}
 
 			setShowCheckbox(true)
-		} else {
-			alert('Город не найден')
 		}
 	} catch (error) {
 		console.error(`Ошибка: ${error.message}`)
+		alert('Ошибка: Город не найден')
 	} finally {
 		setIsLoading(false)
 	}
