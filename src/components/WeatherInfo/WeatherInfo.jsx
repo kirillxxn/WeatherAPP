@@ -33,6 +33,7 @@ function Body() {
 				<img
 					className='main__meteor'
 					src='/src/assets/icons/meteoreffect.png'
+					alt='Эффект падения звезд'
 				></img>
 				<form className='main__form'>
 					<button
@@ -54,6 +55,7 @@ function Body() {
 					<img
 						className='form__icon-moon'
 						src='/src/assets/icons/formmoon.png'
+						alt='Изображение луны'
 					></img>
 					<input
 						value={cityValue}
@@ -65,6 +67,7 @@ function Body() {
 					<img
 						className='form__icon-sun'
 						src='/src/assets/icons/formsun.png'
+						alt='Изображение солнца'
 					></img>
 					<button
 						onClick={handleSearchCity}

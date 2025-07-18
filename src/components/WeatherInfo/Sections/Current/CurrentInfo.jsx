@@ -22,14 +22,17 @@ const CurrentInfo = ({
 				<img
 					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star top_left'
+					alt='Изображение звезды, с эффектом биения'
 				></img>
 				<img
 					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star bot_left'
+					alt='Изображение звезды, с эффектом биения'
 				></img>
 				<img
 					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star center'
+					alt='Изображение звезды, с эффектом биения'
 				></img>
 				{isLoading ? (
 					<div className='load-circle'>
