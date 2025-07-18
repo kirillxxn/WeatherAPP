@@ -1,69 +1,6 @@
-.main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 20px;
-}
-.form__icon-moon {
-	position: absolute;
-	left: -55px;
-	height: 50px;
-	bottom: -10px;
-	width: 50px;
-	transition: all 2.5s ease-in-out;
-}
+/* Начало блока с созданием анимаций */
 
-.form__icon-sun {
-	position: absolute;
-	right: -60px;
-	bottom: -15px;
-	transition: all 2.5s ease-in-out;
-	height: 60px;
-}
-
-.main__meteor {
-	width: 250px;
-	top: -80px;
-	left: -10px;
-	position: absolute;
-	transform: rotateY(180deg) rotateX(0deg);
-	object-fit: cover;
-	animation: flyingmeteor 15s linear infinite;
-}
-.section__general-star {
-	position: absolute;
-	width: 100px;
-	height: 100px;
-}
-.top_left {
-	left: 1px;
-	top: 1px;
-	animation: heartbeat 2s linear infinite;
-}
-.bot_left {
-	left: 200px;
-	bottom: 1px;
-	animation: heartbeat 4s linear infinite;
-}
-.top_right {
-	top: 30px;
-	right: 50px;
-	z-index: -1;
-	animation: heartbeat 7s linear infinite;
-}
-.bot_right {
-	bottom: 30px;
-	right: 400px;
-	z-index: -1;
-	animation: heartbeat 3s linear infinite;
-}
-.center {
-	top: 150px;
-	left: 500px;
-	z-index: -1;
-	animation: heartbeat 2s linear infinite;
-}
-@keyframes heartbeat {
+@keyframes beating {
 	0%,
 	100% {
 		transform: scale(0.8);
@@ -85,314 +22,31 @@
 		opacity: 0.8;
 	}
 }
+
 @keyframes flyingmeteor {
 	0% {
 		opacity: 0;
 		top: -80px;
 		left: -10px;
 	}
+
 	5% {
 		opacity: 1;
 	}
+
 	50% {
 		top: 30%;
 		left: 30%;
 	}
+
 	95% {
 		top: 60%;
 		left: 60%;
 	}
+
 	100% {
 		opacity: 0;
 	}
-}
-.container {
-	display: flex;
-	min-width: 1280px;
-	min-height: 550px;
-	margin-top: 20px;
-	padding: 20px;
-	color: #fff;
-	border-radius: 20px;
-	background-color: rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(10px);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	overflow: hidden;
-}
-.main__container-form {
-	position: relative;
-	transition: transform 0.5s ease-in-out;
-}
-
-.main__container-input {
-	position: relative;
-	min-width: 400px;
-	min-height: 40px;
-	border-radius: 30px;
-	text-align: center;
-	font-size: 15px;
-	font-family: 'Courier New', Courier, monospace;
-	font-weight: 600;
-	font-style: italic;
-	background-color: rgba(255, 255, 255, 0.5);
-	border: none;
-}
-
-.form__clear-btn {
-	position: absolute;
-	content: '';
-	left: 10px;
-	top: 8px;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	z-index: 1;
-	transition: transform 1s ease-in-out;
-}
-
-.form__search-btn {
-	position: absolute;
-	content: '';
-	right: 10px;
-	top: 8px;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	z-index: 1;
-	transition: transform 0.5s ease-in-out;
-}
-
-.main__container-form::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border-radius: 30px;
-	transition: all 0.5s ease-in-out;
-	z-index: -1;
-}
-
-.main__container-form:hover {
-	transform: scale(1.1);
-	.form__icon-moon {
-		transition: all 2.5s ease-in-out;
-		transform: rotate(-180deg) translateX(-460px);
-	}
-	.form__icon-sun {
-		transition: all 2.5s ease-in-out;
-		transform: rotate(180deg) translateX(460px);
-	}
-}
-
-.main__container-form:hover::before {
-	box-shadow: 13px 11px 12px rgba(0, 0, 0, 0.6);
-	background-color: rgba(255, 255, 255, 1);
-}
-
-.main__container-input:focus-visible {
-	border: none;
-	outline: none;
-}
-.main__container-input::placeholder {
-	opacity: 1;
-	color: rgba(0, 0, 0, 0.5);
-	transition: all 0.5s ease-in-out;
-}
-.main__container-input:hover::placeholder {
-	opacity: 0.1;
-	transition: all 0.5s ease-in-out;
-}
-.form-close-btn:hover {
-	transform: rotate(360deg);
-}
-.form-search-btn:hover {
-	transform: scaleX(-1);
-}
-.section__general-info {
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 50%;
-	gap: 20px;
-	text-align: center;
-}
-
-.general__name-city {
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	font-style: italic;
-	font-weight: 500;
-	font-size: 40px;
-}
-.general__day-info {
-	font-size: 32px;
-}
-.general__temp-info {
-	display: flex;
-	align-items: center;
-	gap: 40px;
-	font-size: 96px;
-}
-.general__temp-state {
-	display: flex;
-	font-size: 32px;
-	font-style: italic;
-	align-items: center;
-	gap: 15px;
-}
-
-.section__detailed-info {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	gap: 20px;
-	width: 50%;
-
-	padding: 30px;
-	box-sizing: border-box;
-}
-.oxygen-regular {
-	font-family: 'Oxygen', sans-serif;
-	font-weight: 400;
-	font-style: normal;
-}
-
-.detailed-info {
-	font-family: 'Oxygen', sans-serif;
-	background-color: rgba(0, 0, 0, 0.3);
-	border-radius: 5%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: 25px;
-	gap: 25px;
-	letter-spacing: 2px;
-	transition: transform 1s ease-in-out;
-	box-shadow: 10px 15px 5px rgba(15, 13, 13, 0.3);
-
-	font-weight: 700;
-}
-.detailed-info:hover {
-	background-color: rgba(0, 0, 0, 0.6);
-	transform: scale(1.2) rotateY(360deg);
-}
-.detailed__info-text {
-	font-size: 42px;
-	border-top: 2px solid rgba(255, 255, 255, 0.2);
-	width: 100%;
-	text-align: center;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.load-circle {
-	position: absolute;
-	top: 1px;
-	left: 21%;
-	display: flex;
-	gap: 20px;
-}
-.loading-text {
-	font-size: 32px;
-	text-align: center;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.windows8 {
-	position: relative;
-	width: 24px;
-	height: 24px;
-	margin: auto;
-}
-
-.windows8 .wBall {
-	position: absolute;
-	width: 23px;
-	height: 23px;
-	opacity: 0;
-	transform: rotate(225deg);
-	-o-transform: rotate(225deg);
-	-ms-transform: rotate(225deg);
-	-webkit-transform: rotate(225deg);
-	-moz-transform: rotate(225deg);
-	animation: orbit 1.5125s infinite;
-	-o-animation: orbit 1.5125s infinite;
-	-ms-animation: orbit 1.5125s infinite;
-	-webkit-animation: orbit 1.5125s infinite;
-	-moz-animation: orbit 1.5125s infinite;
-}
-
-.windows8 {
-	position: relative;
-	width: 14px;
-	height: 14px;
-	margin: auto;
-}
-
-.windows8 .wBall {
-	position: absolute;
-	width: 13px;
-	height: 13px;
-	opacity: 0;
-	transform: rotate(225deg);
-	-o-transform: rotate(225deg);
-	-ms-transform: rotate(225deg);
-	-webkit-transform: rotate(225deg);
-	-moz-transform: rotate(225deg);
-	animation: orbit 1.5125s infinite;
-	-o-animation: orbit 1.5125s infinite;
-	-ms-animation: orbit 1.5125s infinite;
-	-webkit-animation: orbit 1.5125s infinite;
-	-moz-animation: orbit 1.5125s infinite;
-}
-
-.windows8 .wBall .wInnerBall {
-	position: absolute;
-	width: 5px;
-	height: 5px;
-	background: #fff;
-	left: 0px;
-	top: 0px;
-	border-radius: 2px;
-}
-
-.windows8 #wBall_1 {
-	animation-delay: 0.326s;
-	-o-animation-delay: 0.326s;
-	-ms-animation-delay: 0.326s;
-	-webkit-animation-delay: 0.326s;
-	-moz-animation-delay: 0.326s;
-}
-
-.windows8 #wBall_2 {
-	animation-delay: 0.063s;
-	-o-animation-delay: 0.063s;
-	-ms-animation-delay: 0.063s;
-	-webkit-animation-delay: 0.063s;
-	-moz-animation-delay: 0.063s;
-}
-
-.windows8 #wBall_3 {
-	animation-delay: 0.1365s;
-	-o-animation-delay: 0.1365s;
-	-ms-animation-delay: 0.1365s;
-	-webkit-animation-delay: 0.1365s;
-	-moz-animation-delay: 0.1365s;
-}
-
-.windows8 #wBall_4 {
-	animation-delay: 0.1995s;
-	-o-animation-delay: 0.1995s;
-	-ms-animation-delay: 0.1995s;
-	-webkit-animation-delay: 0.1995s;
-	-moz-animation-delay: 0.1995s;
-}
-
-.windows8 #wBall_5 {
-	animation-delay: 0.263s;
-	-o-animation-delay: 0.263s;
-	-ms-animation-delay: 0.263s;
-	-webkit-animation-delay: 0.263s;
-	-moz-animation-delay: 0.263s;
 }
 
 @keyframes orbit {
@@ -664,6 +318,266 @@
 		-moz-transform: rotate(900deg);
 	}
 }
+
+/* Конец блока с созданием анимаций */
+
+/* Начало основного блока со стилями */
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.main__meteor {
+	width: 250px;
+	top: -80px;
+	left: -10px;
+	position: absolute;
+	transform: rotateY(180deg) rotateX(0deg);
+	object-fit: cover;
+	animation: flyingmeteor 15s linear infinite;
+}
+
+.main__form {
+	position: relative;
+	transition: transform 0.5s ease-in-out;
+}
+
+.form__clear-btn {
+	position: absolute;
+	content: '';
+	left: 10px;
+	top: 8px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	z-index: 1;
+	transition: transform 1s ease-in-out;
+}
+
+.form__icon-moon {
+	position: absolute;
+	left: -55px;
+	height: 50px;
+	bottom: -10px;
+	width: 50px;
+	transition: all 2.5s ease-in-out;
+}
+
+.main__form-input {
+	position: relative;
+	min-width: 400px;
+	min-height: 40px;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 15px;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: 600;
+	font-style: italic;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: none;
+}
+
+.form__icon-sun {
+	position: absolute;
+	right: -60px;
+	bottom: -15px;
+	transition: all 2.5s ease-in-out;
+	height: 60px;
+}
+
+.form__search-btn {
+	position: absolute;
+	content: '';
+	right: 10px;
+	top: 8px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	z-index: 1;
+	transition: transform 0.5s ease-in-out;
+}
+
+.container {
+	display: flex;
+	min-width: 1280px;
+	min-height: 550px;
+	margin-top: 20px;
+	padding: 20px;
+	color: #fff;
+	border-radius: 20px;
+	background-color: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+
+.section__general-info {
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50%;
+	gap: 20px;
+	text-align: center;
+}
+
+.section__general-star {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+}
+
+.top_left {
+	left: 1px;
+	top: 1px;
+	animation: beating 2s linear infinite;
+}
+
+.bot_left {
+	left: 200px;
+	bottom: 1px;
+	animation: beating 4s linear infinite;
+}
+
+.center {
+	top: 150px;
+	left: 500px;
+	z-index: -1;
+	animation: beating 2s linear infinite;
+}
+
+.load-circle {
+	position: absolute;
+	top: 1px;
+	left: 21%;
+	display: flex;
+	gap: 20px;
+}
+
+.loading-text {
+	font-size: 32px;
+	text-align: center;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.windows8 {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	margin: auto;
+}
+
+.windows8 .wBall {
+	position: absolute;
+	width: 23px;
+	height: 23px;
+	opacity: 0;
+	transform: rotate(225deg);
+	-o-transform: rotate(225deg);
+	-ms-transform: rotate(225deg);
+	-webkit-transform: rotate(225deg);
+	-moz-transform: rotate(225deg);
+	animation: orbit 1.5125s infinite;
+	-o-animation: orbit 1.5125s infinite;
+	-ms-animation: orbit 1.5125s infinite;
+	-webkit-animation: orbit 1.5125s infinite;
+	-moz-animation: orbit 1.5125s infinite;
+}
+
+.windows8 {
+	position: relative;
+	width: 14px;
+	height: 14px;
+	margin: auto;
+}
+
+.windows8 .wBall {
+	position: absolute;
+	width: 13px;
+	height: 13px;
+	opacity: 0;
+	transform: rotate(225deg);
+	-o-transform: rotate(225deg);
+	-ms-transform: rotate(225deg);
+	-webkit-transform: rotate(225deg);
+	-moz-transform: rotate(225deg);
+	animation: orbit 1.5125s infinite;
+	-o-animation: orbit 1.5125s infinite;
+	-ms-animation: orbit 1.5125s infinite;
+	-webkit-animation: orbit 1.5125s infinite;
+	-moz-animation: orbit 1.5125s infinite;
+}
+
+.windows8 .wBall .wInnerBall {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: #fff;
+	left: 0px;
+	top: 0px;
+	border-radius: 2px;
+}
+
+.windows8 #wBall_1 {
+	animation-delay: 0.326s;
+	-o-animation-delay: 0.326s;
+	-ms-animation-delay: 0.326s;
+	-webkit-animation-delay: 0.326s;
+	-moz-animation-delay: 0.326s;
+}
+
+.windows8 #wBall_2 {
+	animation-delay: 0.063s;
+	-o-animation-delay: 0.063s;
+	-ms-animation-delay: 0.063s;
+	-webkit-animation-delay: 0.063s;
+	-moz-animation-delay: 0.063s;
+}
+
+.windows8 #wBall_3 {
+	animation-delay: 0.1365s;
+	-o-animation-delay: 0.1365s;
+	-ms-animation-delay: 0.1365s;
+	-webkit-animation-delay: 0.1365s;
+	-moz-animation-delay: 0.1365s;
+}
+
+.windows8 #wBall_4 {
+	animation-delay: 0.1995s;
+	-o-animation-delay: 0.1995s;
+	-ms-animation-delay: 0.1995s;
+	-webkit-animation-delay: 0.1995s;
+	-moz-animation-delay: 0.1995s;
+}
+
+.windows8 #wBall_5 {
+	animation-delay: 0.263s;
+	-o-animation-delay: 0.263s;
+	-ms-animation-delay: 0.263s;
+	-webkit-animation-delay: 0.263s;
+	-moz-animation-delay: 0.263s;
+}
+
+.general__name-city {
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-style: italic;
+	font-weight: 500;
+	font-size: 40px;
+}
+
+.general__day-info {
+	font-size: 32px;
+}
+
+.general__temp-info {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	font-size: 96px;
+}
+
 .switch-btn {
 	display: inline-block;
 	width: 62px;
@@ -678,6 +592,12 @@
 	position: relative;
 	transition-duration: 300ms;
 }
+
+.switch-on {
+	background: transparent;
+	box-shadow: inset 0 0 10px 0 #999999;
+}
+
 .celsius {
 	position: absolute;
 	left: 5px;
@@ -686,6 +606,7 @@
 	font-size: 18px;
 	font-weight: 900;
 }
+
 .fahrenheit {
 	position: absolute;
 	right: 5px;
@@ -693,6 +614,108 @@
 	font-size: 18px;
 	font-weight: 900;
 }
+
+.general__temp-state {
+	display: flex;
+	font-size: 32px;
+	font-style: italic;
+	align-items: center;
+	gap: 15px;
+}
+
+.section__detailed-info {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	gap: 20px;
+	width: 50%;
+
+	padding: 30px;
+	box-sizing: border-box;
+}
+
+.detailed-info {
+	font-family: 'Oxygen', sans-serif;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 5%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 25px;
+	gap: 25px;
+	letter-spacing: 2px;
+	transition: transform 1s ease-in-out;
+	box-shadow: 10px 15px 5px rgba(15, 13, 13, 0.3);
+
+	font-weight: 700;
+}
+
+.detailed__info-text {
+	font-size: 42px;
+	border-top: 2px solid rgba(255, 255, 255, 0.2);
+	width: 100%;
+	text-align: center;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Конец основного блока со стилями */
+
+/* Начало блока с псевдоэлементами и псевдоклассами */
+.main__form::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 30px;
+	transition: all 0.5s ease-in-out;
+	z-index: -1;
+}
+
+.main__form:hover {
+	transform: scale(1.1);
+
+	.form__icon-moon {
+		transition: all 2.5s ease-in-out;
+		transform: rotate(-180deg) translateX(-460px);
+	}
+
+	.form__icon-sun {
+		transition: all 2.5s ease-in-out;
+		transform: rotate(180deg) translateX(460px);
+	}
+}
+
+.main__form:hover::before {
+	box-shadow: 13px 11px 12px rgba(0, 0, 0, 0.6);
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.main__form-input:focus-visible {
+	border: none;
+	outline: none;
+}
+
+.main__form-input::placeholder {
+	opacity: 1;
+	color: rgba(0, 0, 0, 0.5);
+	transition: all 0.5s ease-in-out;
+}
+
+.main__form-input:hover::placeholder {
+	opacity: 0.1;
+	transition: all 0.5s ease-in-out;
+}
+
+.form-close-btn:hover {
+	transform: rotate(360deg);
+}
+
+.form-search-btn:hover {
+	transform: scaleX(-1);
+}
+
 .switch-btn::after {
 	content: '';
 	height: 36px;
@@ -707,12 +730,14 @@
 	z-index: 1;
 }
 
-.switch-on {
-	background: transparent;
-	box-shadow: inset 0 0 10px 0 #999999;
-}
-
 .switch-on::after {
 	left: 30px;
 	background: orange;
 }
+
+.detailed-info:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+	transform: scale(1.2) rotateY(360deg);
+}
+
+/* Конец блока с псевдоэлементами и псевдоклассами */

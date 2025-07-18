@@ -17,26 +17,21 @@ const HourlyRequest = (setDetailedWeatherStates, cityValue) => {
 				'text22',
 			]
 			const states = {}
-
 			const now = new Date()
 			const currentHour = now.getHours()
-
 			detailedInfoIds.forEach(id => {
 				const hourStr = id.replace('text', '')
 				const slotHour = parseInt(hourStr)
 				const dayIndex = Math.floor(currentHour / 24)
 				const forecastData = data.forecast.forecastday[dayIndex].hour[slotHour]
-
 				const tempElement = document.getElementById(`${id}_temp`)
 				if (tempElement) {
 					tempElement.textContent = `${forecastData.temp_c}°C`
 				}
-
 				const cloudCover = forecastData.cloud
 				const localTimeString = `${
 					slotHour < 10 ? '0' + slotHour : slotHour
 				}:00`
-
 				if (cloudCover <= 50) {
 					if (localTimeString >= '06:00' && localTimeString < '18:00') {
 						states[id] = {
@@ -68,7 +63,6 @@ const HourlyRequest = (setDetailedWeatherStates, cityValue) => {
 					}
 				}
 			})
-
 			setDetailedWeatherStates(states)
 		})
 }

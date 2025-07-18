@@ -1,9 +1,8 @@
 import './WeatherInfo.css'
 import { useState } from 'react'
 import CurrentRequest from './Sections/Current/CurrentRequest.jsx'
-import CurrentInfo from './Sections/CurrentInfo.jsx'
-import HourlyInfo from './Sections/HourlyInfo.jsx'
-
+import CurrentInfo from './Sections/Current/CurrentInfo.jsx'
+import HourlyInfo from './Sections/Hourly/HourlyInfo.jsx'
 function Body() {
 	const [cityValue, setCityValue] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
@@ -12,12 +11,10 @@ function Body() {
 	const [showCheckbox, setShowCheckbox] = useState(false)
 	const [tempCelsius, setTempCelsius] = useState('-')
 	const [tempFar, setTempFar] = useState('-')
-
 	const handleClearCityValue = e => {
 		e.preventDefault()
 		setCityValue('')
 	}
-
 	const handleSearchCity = e => {
 		e.preventDefault()
 		CurrentRequest(
@@ -30,12 +27,14 @@ function Body() {
 			setTempFar
 		)
 	}
-
 	return (
 		<>
 			<main className='main'>
-				<img className='main__meteor' src='/src/assets/icons/meteor.png'></img>
-				<form className='main__container-form'>
+				<img
+					className='main__meteor'
+					src='/src/assets/icons/meteoreffect.png'
+				></img>
+				<form className='main__form'>
 					<button
 						type='reset'
 						onClick={handleClearCityValue}
@@ -54,16 +53,19 @@ function Body() {
 					</button>
 					<img
 						className='form__icon-moon'
-						src='/src/assets/icons/moon (1).png'
+						src='/src/assets/icons/formmoon.png'
 					></img>
 					<input
 						value={cityValue}
 						onChange={event => setCityValue(event.target.value)}
-						className='main__container-input'
+						className='main__form-input'
 						type='text'
 						placeholder='Введите город'
 					/>
-					<img className='form__icon-sun' src='/src/assets/icons/a.png'></img>
+					<img
+						className='form__icon-sun'
+						src='/src/assets/icons/formsun.png'
+					></img>
 					<button
 						onClick={handleSearchCity}
 						type='submit'
@@ -95,5 +97,4 @@ function Body() {
 		</>
 	)
 }
-
 export default Body

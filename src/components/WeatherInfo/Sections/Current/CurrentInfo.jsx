@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 const CurrentInfo = ({
 	isLoading,
 	weatherState,
@@ -8,7 +7,6 @@ const CurrentInfo = ({
 	showCheckbox,
 }) => {
 	const [isActive, setIsActive] = useState(false)
-
 	const handleCheckbox = () => {
 		setIsActive(!isActive)
 	}
@@ -18,20 +16,19 @@ const CurrentInfo = ({
 	} else {
 		currentTemperature = tempFar !== '-' ? `${tempFar} ℉` : ''
 	}
-
 	return (
 		<>
 			<section className='section__general-info'>
 				<img
-					src='/src/assets/icons/light.png'
+					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star top_left'
 				></img>
 				<img
-					src='/src/assets/icons/light.png'
+					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star bot_left'
 				></img>
 				<img
-					src='/src/assets/icons/light.png'
+					src='/src/assets/icons/lighteffect.png'
 					className='section__general-star center'
 				></img>
 				{isLoading ? (
@@ -79,5 +76,4 @@ const CurrentInfo = ({
 		</>
 	)
 }
-
 export default CurrentInfo

@@ -1,7 +1,6 @@
 import { CloudyIcon, Sun, SunAndCloud, Moon } from '/src/utils/TempState'
 import { BASE_URL, PARAMETERS_URL } from '/src/utils/API.js'
 import HourlyRequest from '../Hourly/HourlyRequest'
-
 const CurrentRequest = async (
 	cityValue,
 	setWeatherState,
@@ -14,26 +13,20 @@ const CurrentRequest = async (
 	try {
 		setWeatherState(null)
 		setIsLoading(true)
-
 		const response = await fetch(
 			`${BASE_URL}${import.meta.env.VITE_API_KEY}&q=${encodeURIComponent(
 				cityValue
 			)}${PARAMETERS_URL}`
 		)
-
 		if (!response.ok) {
 			throw new Error('Ошибка: ' + response.statusText)
 		}
-
 		const data = await response.json()
 		setTempCelsius(data.current.temp_c)
 		setTempFar(data.current.temp_f)
-
 		const cityName = document.querySelector('.general__name-city')
 		const temperatureElement = document.querySelector('.general__temp-info')
-
 		const datetime = new Date(data.location.localtime)
-
 		const formattedTime = datetime.toLocaleTimeString('ru-RU', {
 			hour: '2-digit',
 			minute: '2-digit',
@@ -43,22 +36,18 @@ const CurrentRequest = async (
 			month: 'long',
 			day: 'numeric',
 		})
-
 		const timeDOM = document.querySelector('.day__info-time')
 		const dateDOM = document.querySelector('.day__info-date')
 		HourlyRequest(setDetailedWeatherStates, cityValue)
-
 		if (timeDOM) {
 			timeDOM.textContent = formattedTime
 		}
 		if (dateDOM) {
 			dateDOM.textContent = formattedDate
 		}
-
 		if (data.location.name && data.location.name.length > 0) {
 			cityName.textContent = `${data.location.name}`
 			temperatureElement.textContent = `${data.current.temp_c}°C`
-
 			if (data.current.cloud <= 50) {
 				// Ясно
 				if (formattedTime >= '06:00' && formattedTime < '18:00') {
@@ -77,7 +66,6 @@ const CurrentRequest = async (
 				// Облачно
 				setWeatherState({ text: 'Облачно', icon: <CloudyIcon /> })
 			}
-
 			setShowCheckbox(true)
 		}
 	} catch (error) {
@@ -87,5 +75,4 @@ const CurrentRequest = async (
 		setIsLoading(false)
 	}
 }
-
 export default CurrentRequest
