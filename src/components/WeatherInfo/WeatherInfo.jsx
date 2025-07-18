@@ -34,10 +34,7 @@ function Body() {
 	return (
 		<>
 			<main className='main'>
-				<img
-					className='stars'
-					src='/src/assets/icons/—Pngtree—white meteor_5618860.png'
-				></img>
+				<img className='main__meteor' src='/src/assets/icons/meteor.png'></img>
 				<form className='main__container-form'>
 					<button
 						type='reset'
@@ -55,7 +52,10 @@ function Body() {
 							<line x1='19' y1='5' x2='5' y2='19' stroke='#000' />
 						</svg>
 					</button>
-					<img className='W' src='/src/assets/icons/wlogo.png'></img>
+					<img
+						className='form__icon-moon'
+						src='/src/assets/icons/moon (1).png'
+					></img>
 					<input
 						value={cityValue}
 						onChange={event => setCityValue(event.target.value)}
@@ -63,8 +63,7 @@ function Body() {
 						type='text'
 						placeholder='Введите город'
 					/>
-
-					<img className='A' src='/src/assets/icons/alogo.png'></img>
+					<img className='form__icon-sun' src='/src/assets/icons/a.png'></img>
 					<button
 						onClick={handleSearchCity}
 						type='submit'

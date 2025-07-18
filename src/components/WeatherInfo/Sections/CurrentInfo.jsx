@@ -22,17 +22,18 @@ const CurrentInfo = ({
 	return (
 		<>
 			<section className='section__general-info'>
-				<img src='/src/assets/icons/light.png' className='light top_left'></img>
-				<img src='/src/assets/icons/light.png' className='light bot_left'></img>
 				<img
 					src='/src/assets/icons/light.png'
-					className='light top_right'
+					className='section__general-star top_left'
 				></img>
 				<img
 					src='/src/assets/icons/light.png'
-					className='light bot_right'
+					className='section__general-star bot_left'
 				></img>
-				<img src='/src/assets/icons/light.png' className='light center'></img>
+				<img
+					src='/src/assets/icons/light.png'
+					className='section__general-star center'
+				></img>
 				{isLoading ? (
 					<div className='load-circle'>
 						<p className='loading-text'>Загрузка...</p>
