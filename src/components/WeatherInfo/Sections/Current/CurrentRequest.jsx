@@ -1,6 +1,7 @@
 import { CloudyIcon, Sun, SunAndCloud, Moon } from '/src/utils/TempState'
 import { BASE_URL, PARAMETERS_URL } from '/src/utils/API.js'
 import HourlyRequest from '../Hourly/HourlyRequest'
+
 const CurrentRequest = async (
 	cityValue,
 	setWeatherState,

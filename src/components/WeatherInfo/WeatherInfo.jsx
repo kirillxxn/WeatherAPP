@@ -3,7 +3,7 @@ import { useState } from 'react'
 import CurrentRequest from './Sections/Current/CurrentRequest.jsx'
 import CurrentInfo from './Sections/Current/CurrentInfo.jsx'
 import HourlyInfo from './Sections/Hourly/HourlyInfo.jsx'
-function Body() {
+function WeatherInfo() {
 	const [cityValue, setCityValue] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 	const [weatherState, setWeatherState] = useState(null)
@@ -100,4 +100,4 @@ function Body() {
 		</>
 	)
 }
-export default Body
+export default WeatherInfo
